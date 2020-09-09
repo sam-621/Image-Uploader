@@ -5,7 +5,7 @@ import Title from '../components/Title';
 import image from '../img/image.svg';
 
 const Upload = () => {
-  const [file, setFile] = useState();
+  const [fileName, setFileName] = useState();
 
   return (
     <main className="Upload-main">
@@ -18,14 +18,37 @@ const Upload = () => {
           <div className="Upload-input-container">
             <div className="Upload-img">
               <img src={image} alt="Image drag and drop" />
-              <p>Drag & Drop your image here</p>
+              <p>{fileName ? fileName : 'Drag & Drop your image here'}</p>
             </div>
-            <input className="Upload-inputFile" type="file" accept="image/*" />
+            <input
+              id="file"
+              className="Upload-inputFile"
+              type="file"
+              onClick={() => {
+                setFileName(undefined);
+              }}
+              accept="image/*"
+              onChange={(e) => {
+                e.persist();
+                setFileName(document.getElementById('file').files[0].name);
+              }}
+            />
           </div>
           <p className="Upload-Or">Or</p>
           <div className="Upload-submit-container">
-            <p>Chose a file</p>
-            <input type="file" />
+            <label htmlFor="file">Chose a file</label>
+            {/* <input
+              id="file2"
+              type="file"
+              accept="image/*"
+              onClick={() => {
+                setFileName(undefined);
+              }}
+              onChange={(e) => {
+                e.persist();
+                setFileName(document.getElementById('file2').files[0].name);
+              }}
+            /> */}
           </div>
         </form>
       </div>

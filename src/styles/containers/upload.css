@@ -68,6 +68,18 @@ input[type='submit'] {
   font-family: 'Noto Sans';
 }
 .Upload-submit-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+.Upload-submit-container label {
+  cursor: pointer;
+  color: white;
+  background-color: #2f80ed;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+/* .Upload-submit-container {
   display: grid;
   background: #2f80ed;
   margin: 0 25% 36px 25%;
@@ -79,8 +91,7 @@ input[type='submit'] {
   margin: 5px 0;
   color: white;
 }
-.Upload-submit-container input {
+.Upload-submit-container label {
   margin-top: -35px;
   cursor: pointer;
-  opacity: 0;
-}
+  /* opacity: 0; */
