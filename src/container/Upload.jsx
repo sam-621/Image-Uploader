@@ -7,8 +7,21 @@ import image from '../img/image.svg';
 const Upload = () => {
   const [fileName, setFileName] = useState();
 
+  function OnChangeFileHandle(e) {
+    e.persist();
+    // console.log(document.getElementById('file').files);
+    setFileName(document.getElementById('file').files[0].name);
+
+    const container = document.getElementById('Upload-main');
+
+    container.classList.add('AnimationOut');
+    setTimeout(() => {
+      container.classList.add('Hide');
+    }, 1000);
+  }
+
   return (
-    <main className="Upload-main">
+    <main id="Upload-main" className="Upload-main">
       <div className="Upload-container">
         <div className="Upload-title">
           <Title Content="Upload your image" />
@@ -28,10 +41,7 @@ const Upload = () => {
                 setFileName(undefined);
               }}
               accept="image/*"
-              onChange={(e) => {
-                e.persist();
-                setFileName(document.getElementById('file').files[0].name);
-              }}
+              onChange={OnChangeFileHandle}
             />
           </div>
           <p className="Upload-Or">Or</p>

@@ -27,10 +27,6 @@ p {
   display: grid;
   justify-items: center;
   overflow: hidden;
-  /* background-image: url('../../img/image.svg');
-  background-size: cover;
-  background-repeat: no-repeat, repeat;
-  background-size: cover; */
 }
 .Upload-img {
   display: grid;
@@ -79,19 +75,3 @@ input[type='submit'] {
   padding: 8px 16px;
   border-radius: 8px;
 }
-/* .Upload-submit-container {
-  display: grid;
-  background: #2f80ed;
-  margin: 0 25% 36px 25%;
-  overflow: hidden;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.Upload-submit-container p {
-  margin: 5px 0;
-  color: white;
-}
-.Upload-submit-container label {
-  margin-top: -35px;
-  cursor: pointer;
-  /* opacity: 0; */

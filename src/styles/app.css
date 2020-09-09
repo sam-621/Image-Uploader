@@ -4,3 +4,21 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
+
+.AnimationOut {
+  animation-duration: 1s;
+  animation-name: Out;
+}
+@keyframes Out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.Hide {
+  display: none !important;
+}
