@@ -1,10 +1,12 @@
 import React from 'react';
+import './styles/app.css';
+
+import Upload from './container/Upload';
 
 const App = () => {
-  const { TEST } = process.env;
   return (
     <>
-      <h1>{TEST}</h1>
+      <Upload />
     </>
   );
 };
