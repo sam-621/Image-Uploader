@@ -32,12 +32,12 @@ p {
   background-repeat: no-repeat, repeat;
   background-size: cover; */
 }
-.img {
+.Upload-img {
   display: grid;
   justify-items: center;
   margin-top: 35px;
 }
-.img p {
+.Upload-img p {
   color: #bdbdbd;
 }
 input[type='file'] {
@@ -49,4 +49,21 @@ input[type='file'] {
 }
 .Upload-input-container:hover {
   border: 1px dashed #2f80ed;
+}
+.Upload-Or {
+  color: #bdbdbd;
+}
+.Upload-submit-container {
+  display: flex;
+  justify-content: center;
+}
+input[type='submit'] {
+  border: none;
+  background: #2f80ed;
+  border-radius: 8px;
+  color: white;
+  padding: 8px 16px;
+  margin-bottom: 36px;
+  cursor: pointer;
+  font-family: 'Noto Sans';
 }

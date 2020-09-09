@@ -14,14 +14,16 @@ const Upload = () => {
         </div>
         <form method="POST">
           <div className="Upload-input-container">
-            <div className="img">
-              <img src={image} alt="" srcset="" />
+            <div className="Upload-img">
+              <img src={image} alt="Image drag and drop" />
               <p>Drag & Drop your image here</p>
             </div>
             <input type="file" />
           </div>
-          <p>Or</p>
-          <input type="submit" value="Choose file" />
+          <p className="Upload-Or">Or</p>
+          <div className="Upload-submit-container">
+            <input type="submit" value="Choose file" />
+          </div>
         </form>
       </div>
     </main>
