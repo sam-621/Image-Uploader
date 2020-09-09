@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/containers/upload.css';
 
 import Title from '../components/Title';
 import image from '../img/image.svg';
 
 const Upload = () => {
+  const [file, setFile] = useState();
+
   return (
     <main className="Upload-main">
       <div className="Upload-container">
@@ -18,11 +20,12 @@ const Upload = () => {
               <img src={image} alt="Image drag and drop" />
               <p>Drag & Drop your image here</p>
             </div>
-            <input type="file" />
+            <input className="Upload-inputFile" type="file" accept="image/*" />
           </div>
           <p className="Upload-Or">Or</p>
           <div className="Upload-submit-container">
-            <input type="submit" value="Choose file" />
+            <p>Chose a file</p>
+            <input type="file" />
           </div>
         </form>
       </div>

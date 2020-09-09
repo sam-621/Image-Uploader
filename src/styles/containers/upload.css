@@ -40,7 +40,7 @@ p {
 .Upload-img p {
   color: #bdbdbd;
 }
-input[type='file'] {
+.Upload-inputFile {
   margin-top: -182px;
   cursor: pointer;
   height: 218.9px;
@@ -66,4 +66,21 @@ input[type='submit'] {
   margin-bottom: 36px;
   cursor: pointer;
   font-family: 'Noto Sans';
+}
+.Upload-submit-container {
+  display: grid;
+  background: #2f80ed;
+  margin: 0 25% 36px 25%;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.Upload-submit-container p {
+  margin: 5px 0;
+  color: white;
+}
+.Upload-submit-container input {
+  margin-top: -35px;
+  cursor: pointer;
+  opacity: 0;
 }
