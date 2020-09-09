@@ -1,0 +1,30 @@
+.Loader-div {
+  display: none;
+  align-items: center;
+  height: 100vh;
+}
+.Loader-container {
+  padding: 36px 32px;
+  display: grid;
+  align-items: center;
+  background: #fafafb;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin: 0 35%;
+}
+.Loader-container h1 {
+  color: #4f4f4f;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: start;
+}
+#Loader-progress {
+  width: 100%;
+  background-color: grey;
+}
+
+#Loader-bar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+}

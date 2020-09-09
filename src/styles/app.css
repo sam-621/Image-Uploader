@@ -22,3 +22,7 @@ body {
 .Hide {
   display: none !important;
 }
+
+.Show {
+  display: grid !important;
+}
