@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/containers/upload.css';
-import Axios from 'Axios';
+import Axios from 'axios';
 import path from 'path';
 
 import Title from '../components/Title';
