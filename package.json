@@ -4,7 +4,9 @@
   "description": "An application where you can storage your images in the cloud",
   "main": "src/index.jsx",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.config.dev.js --open"
+    "dev": "webpack-dev-server --config webpack.config.dev.js --open",
+    "build": "webpack --config webpack.config.prod.js",
+    "prod": "http-server ./dist/ --proxy http://localhost:8080? -o"
   },
   "repository": {
     "type": "git",
