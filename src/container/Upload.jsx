@@ -56,7 +56,7 @@ const Upload = () => {
 
     try {
       const res = await Axios.post(
-        'https://image-uploader-api.herokuapp.com/api/upload',
+        'http://localhost:8000/api/upload',
         formData,
         {
           headers: {
@@ -66,6 +66,7 @@ const Upload = () => {
         }
       );
 
+      console.log(res.data);
       setUrl(res.data.data.url);
       loader.classList.add('AnimationOut');
 
