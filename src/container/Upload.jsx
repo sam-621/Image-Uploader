@@ -10,16 +10,24 @@ import Download from './Download';
 
 const Upload = () => {
   const [fileName, setFileName] = useState('');
-  const [file, setFile] = useState({});
+  const [url, setUrl] = useState('');
+  const [loading, setLoading] = useState(false);
   const { API_KEY } = process.env;
 
   async function OnChangeFileHandle(e) {
     e.persist();
+
+    const container = document.getElementById('Upload-main');
+
+    container.classList.add('AnimationOut');
+    setTimeout(() => {
+      container.classList.add('Hide');
+      setLoading(true);
+      Move();
+    }, 1000);
+
     const formData = new FormData();
     formData.append('image', document.getElementById('file').files[0]);
-    setFileName(document.getElementById('file').files[0].name);
-    setFile(document.getElementById('file').files[0]);
-    // console.log(file);
 
     Axios({
       method: 'POST',
@@ -29,36 +37,30 @@ const Upload = () => {
     })
       .then((res) => {
         console.log(res);
+        setUrl(res.data.data.url);
+        document
+          .getElementById('loader-container')
+          .classList.add('AnimationOut');
+        setTimeout(() => {
+          setLoading(false);
+          document.getElementById('loader-container').classList.remove('Show');
+          document.getElementById('loader-container').classList.add('Hide');
+        }, 1000);
+        setTimeout(() => {
+          document.getElementById('Download-main').classList.add('Show');
+          document.getElementById('Download-main').classList.add('AnimationIn');
+        }, 1000);
       })
       .catch((err) => {
         console.log(err);
       });
-    // const container = document.getElementById('Upload-main');
-
-    // container.classList.add('AnimationOut');
-    // setTimeout(() => {
-    //   container.classList.add('Hide');
-    // }, 1000);
-    // setTimeout(() => {
-    //   document.getElementById('loader-container').classList.add('Show');
-    //   Move();
-    // }, 1000);
-    // setTimeout(() => {
-    //   document.getElementById('loader-container').classList.add('AnimationOut');
-    // }, 2000);
-    // setTimeout(() => {
-    //   document.getElementById('loader-container').classList.remove('Show');
-    //   document.getElementById('loader-container').classList.add('Hide');
-    // }, 3000);
-    // setTimeout(() => {
-    //   document.getElementById('Download-main').classList.add('Show');
-
-    //   document.getElementById('Download-main').classList.add('AnimationIn');
-    // }, 1000);
   }
 
   return (
     <>
+      {loading
+        ? document.getElementById('loader-container').classList.add('Show')
+        : null}
       <Loader />
 
       <main id="Upload-main" className="Upload-main">
@@ -93,7 +95,7 @@ const Upload = () => {
           </form>
         </div>
       </main>
-      <Download />
+      <Download URL={url} />
     </>
   );
 };

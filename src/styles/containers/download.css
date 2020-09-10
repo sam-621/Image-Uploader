@@ -34,6 +34,8 @@
   justify-content: center;
 }
 .Download-actions p {
+  max-width: 240px;
+  overflow: hidden;
   font-weight: 500;
   font-size: 8px;
   margin: 0;

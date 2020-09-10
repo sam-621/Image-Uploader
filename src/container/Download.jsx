@@ -4,7 +4,7 @@ import '../styles/containers/download.css';
 import Success from '../img/success.svg';
 import imageTest from '../img/SocialMedia-API.png';
 
-const Download = () => {
+const Download = ({ URL }) => {
   return (
     <main id="Download-main" className="Download-main ">
       <div className="Download-container">
@@ -13,10 +13,10 @@ const Download = () => {
           <h1>Uploaded successfully!</h1>
         </div>
         <div className="Download-img-preview">
-          <img src={imageTest} width="338px" height="224.4px" alt="" />
+          <img src={URL} width="338px" height="224.4px" alt="" />
         </div>
         <div className="Download-actions">
-          <p>https://github.com/rogeliosamuel621/repositories</p>
+          <p>{URL}</p>
           <button>Copy Link</button>
         </div>
       </div>
