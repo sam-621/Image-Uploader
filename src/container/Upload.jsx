@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/containers/upload.css';
+import Axios from 'Axios';
 
 import Title from '../components/Title';
 import image from '../img/image.svg';
@@ -8,35 +9,52 @@ import Move from '../utils/Move';
 import Download from './Download';
 
 const Upload = () => {
-  const [fileName, setFileName] = useState();
+  const [fileName, setFileName] = useState('');
+  const [file, setFile] = useState({});
+  const { API_KEY } = process.env;
 
-  function OnChangeFileHandle(e) {
+  async function OnChangeFileHandle(e) {
     e.persist();
-    // console.log(document.getElementById('file').files);
+    const formData = new FormData();
+    formData.append('image', document.getElementById('file').files[0]);
     setFileName(document.getElementById('file').files[0].name);
+    setFile(document.getElementById('file').files[0]);
+    // console.log(file);
 
-    const container = document.getElementById('Upload-main');
+    Axios({
+      method: 'POST',
+      url: 'http://localhost:8000/api/upload',
+      data: formData,
+      headers: { 'api-key': API_KEY },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // const container = document.getElementById('Upload-main');
 
-    container.classList.add('AnimationOut');
-    setTimeout(() => {
-      container.classList.add('Hide');
-    }, 1000);
-    setTimeout(() => {
-      document.getElementById('loader-container').classList.add('Show');
-      Move();
-    }, 1000);
-    setTimeout(() => {
-      document.getElementById('loader-container').classList.add('AnimationOut');
-    }, 2000);
-    setTimeout(() => {
-      document.getElementById('loader-container').classList.remove('Show');
-      document.getElementById('loader-container').classList.add('Hide');
-    }, 3000);
-    setTimeout(() => {
-      document.getElementById('Download-main').classList.add('Show');
+    // container.classList.add('AnimationOut');
+    // setTimeout(() => {
+    //   container.classList.add('Hide');
+    // }, 1000);
+    // setTimeout(() => {
+    //   document.getElementById('loader-container').classList.add('Show');
+    //   Move();
+    // }, 1000);
+    // setTimeout(() => {
+    //   document.getElementById('loader-container').classList.add('AnimationOut');
+    // }, 2000);
+    // setTimeout(() => {
+    //   document.getElementById('loader-container').classList.remove('Show');
+    //   document.getElementById('loader-container').classList.add('Hide');
+    // }, 3000);
+    // setTimeout(() => {
+    //   document.getElementById('Download-main').classList.add('Show');
 
-      document.getElementById('Download-main').classList.add('AnimationIn');
-    }, 1000);
+    //   document.getElementById('Download-main').classList.add('AnimationIn');
+    // }, 1000);
   }
 
   return (
@@ -49,7 +67,7 @@ const Upload = () => {
             <Title Content="Upload your image" />
             <p>File should be Jepg, Png...</p>
           </div>
-          <form method="POST">
+          <form>
             <div className="Upload-input-container">
               <div className="Upload-img">
                 <img src={image} alt="Image drag and drop" />
@@ -59,6 +77,7 @@ const Upload = () => {
                 id="file"
                 className="Upload-inputFile"
                 type="file"
+                name="image"
                 onClick={() => {
                   setFileName(undefined);
                 }}
@@ -70,6 +89,7 @@ const Upload = () => {
             <div className="Upload-submit-container">
               <label htmlFor="file">Chose a file</label>
             </div>
+            {/* <input type="submit" /> */}
           </form>
         </div>
       </main>
