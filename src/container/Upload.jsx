@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/containers/upload.css';
 import Axios from 'Axios';
+import path from 'path';
 
 import Title from '../components/Title';
 import image from '../img/image.svg';
@@ -12,15 +13,36 @@ const Upload = () => {
   const [fileName, setFileName] = useState('');
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('File should be Jepg, Png...');
   const { API_KEY } = process.env;
 
   async function OnChangeFileHandle(e) {
     e.persist();
+    const file = document.getElementById('file').files[0];
 
+    if (!file) {
+      return;
+    }
+    var ext = path.extname(file.name);
+    if (
+      ext !== '.png' &&
+      ext !== '.jpg' &&
+      ext !== '.svg' &&
+      ext !== '.jpeg' &&
+      ext !== '.ico'
+    ) {
+      setMessage('Only images are allowed');
+      document.getElementById('message').style.color = 'red';
+      setFileName('');
+      return;
+    }
+    document.getElementById('message').style.color = 'green';
     const uploadContainer = document.getElementById('Upload-main');
     const loader = document.getElementById('loader-container');
     const downloadContainer = document.getElementById('Download-main');
     const header = { headers: { 'api-key': API_KEY } };
+
+    setFileName(file.name);
 
     uploadContainer.classList.add('AnimationOut');
     setTimeout(() => {
@@ -69,7 +91,7 @@ const Upload = () => {
         <div className="Upload-container">
           <div className="Upload-title">
             <Title Content="Upload your image" />
-            <p>File should be Jepg, Png...</p>
+            <p id="message">{message}</p>
           </div>
           <form>
             <div className="Upload-input-container">
