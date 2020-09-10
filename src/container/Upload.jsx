@@ -56,7 +56,7 @@ const Upload = () => {
 
     try {
       const res = await Axios.post(
-        'https://image-uploader-api.herokuapp.com/upload',
+        'https://image-uploader-api.herokuapp.com/api/upload',
         formData,
         {
           headers: {
