@@ -17,11 +17,14 @@ const Upload = () => {
   async function OnChangeFileHandle(e) {
     e.persist();
 
-    const container = document.getElementById('Upload-main');
+    const uploadContainer = document.getElementById('Upload-main');
+    const loader = document.getElementById('loader-container');
+    const downloadContainer = document.getElementById('Download-main');
+    const header = { headers: { 'api-key': API_KEY } };
 
-    container.classList.add('AnimationOut');
+    uploadContainer.classList.add('AnimationOut');
     setTimeout(() => {
-      container.classList.add('Hide');
+      uploadContainer.classList.add('Hide');
       setLoading(true);
       Move();
     }, 1000);
@@ -29,31 +32,29 @@ const Upload = () => {
     const formData = new FormData();
     formData.append('image', document.getElementById('file').files[0]);
 
-    Axios({
-      method: 'POST',
-      url: 'http://localhost:8000/api/upload',
-      data: formData,
-      headers: { 'api-key': API_KEY },
-    })
-      .then((res) => {
-        console.log(res);
-        setUrl(res.data.data.url);
-        document
-          .getElementById('loader-container')
-          .classList.add('AnimationOut');
-        setTimeout(() => {
-          setLoading(false);
-          document.getElementById('loader-container').classList.remove('Show');
-          document.getElementById('loader-container').classList.add('Hide');
-        }, 1000);
-        setTimeout(() => {
-          document.getElementById('Download-main').classList.add('Show');
-          document.getElementById('Download-main').classList.add('AnimationIn');
-        }, 1000);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      const res = await Axios.post(
+        'http://localhost:8000/api/upload',
+        formData,
+        header
+      );
+
+      setUrl(res.data.data.url);
+      loader.classList.add('AnimationOut');
+
+      setTimeout(() => {
+        setLoading(false);
+        loader.classList.remove('Show');
+        loader.classList.add('Hide');
+      }, 1000);
+
+      setTimeout(() => {
+        downloadContainer.classList.add('Show');
+        downloadContainer.classList.add('AnimationIn');
+      }, 1000);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -61,6 +62,7 @@ const Upload = () => {
       {loading
         ? document.getElementById('loader-container').classList.add('Show')
         : null}
+
       <Loader />
 
       <main id="Upload-main" className="Upload-main">
@@ -91,7 +93,6 @@ const Upload = () => {
             <div className="Upload-submit-container">
               <label htmlFor="file">Chose a file</label>
             </div>
-            {/* <input type="submit" /> */}
           </form>
         </div>
       </main>
