@@ -16,15 +16,20 @@
   color: #4f4f4f;
   font-weight: 500;
   font-size: 18px;
+  margin: 0 0 30px 0;
   text-align: start;
 }
 #Loader-progress {
   width: 100%;
-  background-color: grey;
+  background: #f2f2f2;
+  border-radius: 8px;
+  height: 6px;
+  overflow: hidden;
 }
 
 #Loader-bar {
-  width: 1%;
-  height: 30px;
-  background-color: green;
+  width: 20%;
+  height: 6px;
+  background: #2f80ed;
+  border-radius: 8px;
 }

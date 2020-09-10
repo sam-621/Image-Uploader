@@ -4,26 +4,9 @@ import '../styles/containers/upload.css';
 import Title from '../components/Title';
 import image from '../img/image.svg';
 import Loader from '../components/Loader';
+import Move from '../utils/Move';
 
 const Upload = () => {
-  var i = 0;
-  function move() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById('Loader-bar');
-      var width = 1;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (width >= 100) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + '%';
-        }
-      }
-    }
-  }
   const [fileName, setFileName] = useState();
 
   function OnChangeFileHandle(e) {
@@ -39,7 +22,7 @@ const Upload = () => {
     }, 1000);
     setTimeout(() => {
       document.getElementById('loader-container').classList.add('Show');
-      move();
+      Move();
     }, 1000);
   }
 
