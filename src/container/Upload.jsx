@@ -5,6 +5,7 @@ import Title from '../components/Title';
 import image from '../img/image.svg';
 import Loader from '../components/Loader';
 import Move from '../utils/Move';
+import Download from './Download';
 
 const Upload = () => {
   const [fileName, setFileName] = useState();
@@ -23,6 +24,18 @@ const Upload = () => {
     setTimeout(() => {
       document.getElementById('loader-container').classList.add('Show');
       Move();
+    }, 1000);
+    setTimeout(() => {
+      document.getElementById('loader-container').classList.add('AnimationOut');
+    }, 2000);
+    setTimeout(() => {
+      document.getElementById('loader-container').classList.remove('Show');
+      document.getElementById('loader-container').classList.add('Hide');
+    }, 3000);
+    setTimeout(() => {
+      document.getElementById('Download-main').classList.add('Show');
+
+      document.getElementById('Download-main').classList.add('AnimationIn');
     }, 1000);
   }
 
@@ -56,22 +69,11 @@ const Upload = () => {
             <p className="Upload-Or">Or</p>
             <div className="Upload-submit-container">
               <label htmlFor="file">Chose a file</label>
-              {/* <input
-              id="file2"
-              type="file"
-              accept="image/*"
-              onClick={() => {
-                setFileName(undefined);
-              }}
-              onChange={(e) => {
-                e.persist();
-                setFileName(document.getElementById('file2').files[0].name);
-              }}
-            /> */}
             </div>
           </form>
         </div>
       </main>
+      <Download />
     </>
   );
 };

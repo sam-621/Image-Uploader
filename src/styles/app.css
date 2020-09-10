@@ -9,6 +9,10 @@ body {
   animation-duration: 1s;
   animation-name: Out;
 }
+.AnimationIn {
+  animation-duration: 1s;
+  animation-name: In;
+}
 @keyframes Out {
   from {
     opacity: 1;
@@ -16,6 +20,15 @@ body {
 
   to {
     opacity: 0;
+  }
+}
+
+@keyframes In {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

@@ -1,0 +1,53 @@
+.Download-main {
+  display: none;
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+}
+.Download-container {
+  display: grid;
+  grid-gap: 25px;
+  background: #fafafb;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 31px;
+}
+.Download-Message {
+  display: grid;
+  justify-items: center;
+}
+.Download-Message h1 {
+  margin: 0;
+  color: #4f4f4f;
+  font-size: 18px;
+  font-weight: 500;
+}
+.Download-img-preview {
+  display: flex;
+  justify-content: center;
+}
+.Download-img-preview img {
+  border-radius: 12px;
+}
+.Download-actions {
+  display: flex;
+  justify-content: center;
+}
+.Download-actions p {
+  font-weight: 500;
+  font-size: 8px;
+  margin: 0;
+  padding: 11px 13px;
+  background-color: #f6f8fb;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.Download-actions button {
+  cursor: pointer;
+  background: #2f80ed;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  padding: 9px 20px;
+}
