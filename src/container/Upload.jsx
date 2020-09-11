@@ -62,8 +62,21 @@ const Upload = () => {
         header
       );
 
-      if (res.data.data.err) {
+      if (res.data.data.error) {
         setError('An error has occurred uploading your photo');
+        loader.classList.add('AnimationOut');
+
+        setTimeout(() => {
+          setLoading(false);
+          loader.classList.remove('Show');
+          loader.classList.add('Hide');
+        }, 1000);
+
+        setTimeout(() => {
+          downloadContainer.classList.add('Show');
+          downloadContainer.classList.add('AnimationIn');
+        }, 1000);
+        return;
       }
       setUrl(res.data.data.url);
       loader.classList.add('AnimationOut');
