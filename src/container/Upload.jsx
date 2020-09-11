@@ -14,6 +14,7 @@ const Upload = () => {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('File should be Jepg, Png...');
+  const [error, setError] = useState('');
   const { API_KEY } = process.env;
 
   async function OnChangeFileHandle(e) {
@@ -58,13 +59,12 @@ const Upload = () => {
       const res = await Axios.post(
         'https://image-uploader-api.herokuapp.com/api/upload',
         formData,
-        {
-          headers: {
-            'api-key': API_KEY,
-          },
-        }
+        header
       );
 
+      if (res.data.data.err) {
+        setError('An error has occurred uploading your photo');
+      }
       setUrl(res.data.data.url);
       loader.classList.add('AnimationOut');
 
@@ -79,7 +79,7 @@ const Upload = () => {
         downloadContainer.classList.add('AnimationIn');
       }, 1000);
     } catch (err) {
-      console.log(err);
+      setError('An error has occurred uploading your photo');
     }
   }
 
@@ -108,9 +108,7 @@ const Upload = () => {
                 className="Upload-inputFile"
                 type="file"
                 name="image"
-                onClick={() => {
-                  setFileName('');
-                }}
+                onClick={() => setFileName('')}
                 accept="image/*"
                 onChange={OnChangeFileHandle}
               />
@@ -122,7 +120,7 @@ const Upload = () => {
           </form>
         </div>
       </main>
-      <Download URL={url} />
+      <Download URL={url} err={error} />
     </>
   );
 };
