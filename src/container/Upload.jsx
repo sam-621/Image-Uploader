@@ -41,7 +41,13 @@ const Upload = () => {
     const uploadContainer = document.getElementById('Upload-main');
     const loader = document.getElementById('loader-container');
     const downloadContainer = document.getElementById('Download-main');
-    const header = { headers: { 'api-key': API_KEY } };
+    const header = {
+      headers: {
+        'api-key': API_KEY,
+        'Access-Control-Allow-Origin':
+          'https://image-uploader-rs21.netlify.app/',
+      },
+    };
 
     setFileName(file.name);
 
@@ -93,6 +99,18 @@ const Upload = () => {
       }, 1000);
     } catch (err) {
       setError('An error has occurred uploading your photo');
+      loader.classList.add('AnimationOut');
+
+      setTimeout(() => {
+        setLoading(false);
+        loader.classList.remove('Show');
+        loader.classList.add('Hide');
+      }, 1000);
+
+      setTimeout(() => {
+        downloadContainer.classList.add('Show');
+        downloadContainer.classList.add('AnimationIn');
+      }, 1000);
     }
   }
 
