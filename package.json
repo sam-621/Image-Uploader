@@ -5,7 +5,7 @@
   "main": "src/index.jsx",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js --open",
-    "build": "webpack --config webpack.config.prod.js",
+    "build": "node ./src/utils/script.js && webpack --config webpack.config.prod.js",
     "prod": "http-server ./dist/ --proxy http://localhost:8080? -o"
   },
   "repository": {
