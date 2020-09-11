@@ -45,7 +45,7 @@ const Upload = () => {
       headers: {
         'api-key': API_KEY,
         'Access-Control-Allow-Origin':
-          'https://image-uploader-rs21.netlify.app/',
+          'https://image-uploader-rs21.netlify.app',
       },
     };
 
