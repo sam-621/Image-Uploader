@@ -67,7 +67,7 @@ const Upload = () => {
         formData,
         header
       );
-
+      console.log(res);
       if (res.data.data.error) {
         setError('An error has occurred uploading your photo');
         loader.classList.add('AnimationOut');
