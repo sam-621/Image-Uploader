@@ -61,12 +61,10 @@ const Upload = () => {
         {
           headers: {
             'api-key': API_KEY,
-            'Access-Control-Allow-Origin': 'http://localhost:8000/',
           },
         }
       );
 
-      console.log(res.data);
       setUrl(res.data.data.url);
       loader.classList.add('AnimationOut');
 
@@ -111,7 +109,7 @@ const Upload = () => {
                 type="file"
                 name="image"
                 onClick={() => {
-                  setFileName(undefined);
+                  setFileName('');
                 }}
                 accept="image/*"
                 onChange={OnChangeFileHandle}
