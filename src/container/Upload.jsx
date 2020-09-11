@@ -16,6 +16,7 @@ const Upload = () => {
   const [message, setMessage] = useState('File should be Jepg, Png...');
   const [error, setError] = useState('');
   const { API_KEY } = process.env;
+  console.log(process.env.MY_API_KEY);
 
   async function OnChangeFileHandle(e) {
     e.persist();
