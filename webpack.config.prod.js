@@ -46,6 +46,9 @@ module.exports = {
       favicon: './src/img/Logo.ico',
     }),
     new MiniCssExtractPlugin(),
-    new Dotenv({ path: path.resolve(__dirname, './.env') }),
+    new Dotenv({
+      path: path.resolve(__dirname, './.env'),
+      systemvars: true,
+    }),
   ],
 };
