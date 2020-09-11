@@ -29,6 +29,14 @@ npm run build
 npm run start
 ```
 
+## Resources
+
+- [Environment variables in netlify](https://docs.netlify.com/configure-builds/environment-variables/)
+- [Using environment variable in netlify correctly](https://community.netlify.com/t/support-guide-using-environment-variables-on-netlify-correctly/267)
+- [Establecer variable de entorno para compilar en Netlify](https://www.it-swarm.dev/es/webpack/establecer-variable-de-entorno-para-compilar-en-netlify/836242297/)
+- [Dotenv webpack](https://www.npmjs.com/package/dotenv-webpack)
+- [Deploy failed due to upload file](https://community.netlify.com/t/deploy-failed-due-to-upload-file/6456/14)
+
 ## Experience building this project
 
 I had too many problems Deploying these apps to heroku and netlify, I made like 40 commits just to solving problems, but finally, my apps work correctly.
