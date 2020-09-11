@@ -19,13 +19,12 @@ const Upload = () => {
 
   async function OnChangeFileHandle(e) {
     e.persist();
-    console.log(API_KEY);
     const file = document.getElementById('file').files[0];
 
     if (!file) {
       return;
     }
-    var ext = path.extname(file.name);
+    const ext = path.extname(file.name);
     if (
       ext !== '.png' &&
       ext !== '.jpg' &&
@@ -38,6 +37,7 @@ const Upload = () => {
       setFileName('');
       return;
     }
+
     document.getElementById('message').style.color = 'green';
     const uploadContainer = document.getElementById('Upload-main');
     const loader = document.getElementById('loader-container');
@@ -68,7 +68,6 @@ const Upload = () => {
         formData,
         header
       );
-      console.log(res);
       if (res.data.data.error) {
         setError('An error has occurred uploading your photo');
         loader.classList.add('AnimationOut');
@@ -85,6 +84,7 @@ const Upload = () => {
         }, 1000);
         return;
       }
+
       setUrl(res.data.data.url);
       loader.classList.add('AnimationOut');
 
