@@ -19,6 +19,7 @@ const Upload = () => {
 
   async function OnChangeFileHandle(e) {
     e.persist();
+    console.log(API_KEY);
     const file = document.getElementById('file').files[0];
 
     if (!file) {
