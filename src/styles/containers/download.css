@@ -28,6 +28,9 @@
 }
 .Download-img-preview img {
   border-radius: 12px;
+  object-fit: contain;
+  max-width: 338px;
+  max-height: 224.4px;
 }
 .Download-actions {
   display: flex;
