@@ -12,8 +12,8 @@ const Download = ({ URL, err }) => {
     range.selectNode(textToCopy);
     window.getSelection().addRange(range);
 
-    const resultado = document.execCommand('copy');
-    if (!resultado) {
+    const result = document.execCommand('copy');
+    if (!result) {
       console.log('ERROR al intentar copiar el email');
     }
   }
@@ -28,12 +28,7 @@ const Download = ({ URL, err }) => {
           <h1>{err ? err : 'Uploaded successfully!'}</h1>
         </div>
         <div className="Download-img-preview">
-          <img
-            src={err ? ImageError : URL}
-            width="338px"
-            height="224.4px"
-            alt=""
-          />
+          <img src={err ? ImageError : URL} alt="Image preview" />
         </div>
         <div className="Download-actions">
           <p id="Text-to-copy">{err ? 'ERROR' : URL}</p>
