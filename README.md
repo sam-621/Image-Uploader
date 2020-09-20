@@ -2,7 +2,9 @@
 
 An application where you can storage your images in the cloud. [Here is the API for this App](https://github.com/rogeliosamuel621/Image-Uploader-API)
 
-![Project screenshot](./Docs/Screenshot.png "Project screenshot")
+Demo: [Image uploader](https://image-uploader-rs21.netlify.app/)
+
+![Project screenshot](./Docs/Screenshot.png 'Project screenshot')
 
 ## Built with
 
